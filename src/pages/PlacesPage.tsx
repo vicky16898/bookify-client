@@ -25,7 +25,9 @@ export const REMOTE_SERVER = process.env.REACT_APP_API_BASE_PATH
 export default function PlacesPage() {
     const [places, setPlaces] = useState<{ _id:string, title: string, description: string, photos: string[] }[]>([]);
     useEffect(() => {
-        axios.get('/user-places').then(({ data }) => {
+        axios.get('/user-places', {
+            withCredentials: true
+        }).then(({ data }) => {
             setPlaces(data);
         })
     }, []);
