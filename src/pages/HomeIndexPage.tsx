@@ -20,7 +20,7 @@ export default function HomeIndexPage() {
         const searchParams = new URLSearchParams(location.search);
         const searchQuery = searchParams.get('search');
         
-        axios.get('/search-places' + (searchQuery ? `?search=${searchQuery}` : ''))
+        axios.get(`${baseAPIPath}/search-places` + (searchQuery ? `?search=${searchQuery}` : ''))
             .then(response => {
                 setPlaces(response.data);
             })

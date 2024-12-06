@@ -18,7 +18,7 @@ import UpdateProfilePage from './pages/UpdateProfilePage';
 import axios from 'axios';
 
 axios.defaults.withCredentials = true;
-axios.defaults.baseURL = 'http://localhost:4000';
+axios.defaults.baseURL = process.env.REACT_APP_API_BASE_PATH;
 
 function App() {
 
@@ -36,7 +36,7 @@ function App() {
             <Route path='/account/profile' element={<ProfilePage />} />
             <Route path='/account/bookings' element={<BookingsPage />} />
             <Route path='/account/bookings/:id' element={<BookingPage />} />
-            <Route path='/account/accommodations' element={<PlacesPage />} />
+            <Route path='/accommodations' element={<PlacesPage />} />
             <Route path='/account/:places/:id' element={<PlacesFormPage />} />
             <Route path='/account/updateProfile' element={<UpdateProfilePage />} />
           </Route>
