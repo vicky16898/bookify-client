@@ -1,6 +1,6 @@
 import { useState } from "react";
 import axios from 'axios';
-export const REMOTE_SERVER = process.env.API_BASE_PATH
+export const REMOTE_SERVER = process.env.REACT_APP_API_BASE_PATH
 export default function PhotosUploader({ addedPhotos, onChange }) {
     const [photoLink, setPhotoLink] = useState('');
     async function addPhotoByLink(ev) {

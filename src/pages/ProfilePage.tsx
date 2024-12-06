@@ -16,7 +16,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 
 export default function ProfilePage() {
-  const baseAPIPath = process.env.API_BASE_PATH || 'http://localhost:4000';
+  const baseAPIPath = process.env.REACT_APP_API_BASE_PATH;
   const { user, loading, setUser } = useContext(UserContext);
   const navigate = useNavigate();
 

@@ -21,7 +21,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link, Navigate, useParams } from "react-router-dom";
 import PlaceImg from "../PlaceImg";
-export const REMOTE_SERVER = process.env.API_BASE_PATH
+export const REMOTE_SERVER = process.env.REACT_APP_API_BASE_PATH
 export default function PlacesPage() {
     const [places, setPlaces] = useState<{ _id:string, title: string, description: string, photos: string[] }[]>([]);
     useEffect(() => {

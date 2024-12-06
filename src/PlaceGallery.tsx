@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 export default function PlaceGallery({ place }: { place: any }) {
     const [showAllPhotos, setShowAllPhotos] = useState(false);
-    const baseAPIPath = process.env.API_BASE_PATH || 'http://localhost:4000';
+    const baseAPIPath = process.env.REACT_APP_API_BASE_PATH;
     if (showAllPhotos) {
         return (
             <div className="absolute inset-0 bg-black text-white min-h-screen z-50">

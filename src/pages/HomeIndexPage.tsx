@@ -14,7 +14,7 @@ export default function HomeIndexPage() {
 
     const [places, setPlaces] = useState([]);
     const location = useLocation();
-    const baseAPIPath = process.env.API_BASE_PATH || 'http://localhost:4000';
+    const baseAPIPath = process.env.REACT_APP_API_BASE_PATH;
 
     useEffect(() => {
         const searchParams = new URLSearchParams(location.search);

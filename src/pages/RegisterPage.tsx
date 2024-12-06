@@ -15,7 +15,7 @@ export default function RegisterPage() {
     const [email,setEmail] = useState('');
     const [password,setPassword] = useState('');
     const navigate = useNavigate();
-    const baseAPIPath = process.env.API_BASE_PATH || 'http://localhost:4000';
+    const baseAPIPath = process.env.REACT_APP_API_BASE_PATH;
 
     useEffect(() => {
         console.log(role);
