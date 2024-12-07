@@ -23,7 +23,6 @@ import axios from "axios";
 
 const userNavigation = [
   { name: "Your Profile", href: "/account/profile" },
-  { name: "Settings", href: "/settings" },
   { name: "Sign out", href: "#" },
 ];
 
@@ -35,7 +34,7 @@ export default function AccountPage() {
 
   const { user, loading, setUser } = useContext(UserContext);
   const navigate = useNavigate();
-  const baseAPIPath = process.env.REACT_APP_API_BASE_PATH;
+  const baseAPIPath = process.env.REACT_APP_API_BASE_PATH || "http://localhost:4000";
 
   const navigation = [
     { name: "Profile", href: "/account/profile", current: true },

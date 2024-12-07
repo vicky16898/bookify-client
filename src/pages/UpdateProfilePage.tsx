@@ -22,7 +22,7 @@ export default function UpdateProfilePage() {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   const navigate = useNavigate();
-  const baseAPIPath = process.env.REACT_APP_API_BASE_PATH;
+  const baseAPIPath = process.env.REACT_APP_API_BASE_PATH || "http://localhost:4000";
 
   async function handleUpdate(e: any) {
     e.preventDefault();

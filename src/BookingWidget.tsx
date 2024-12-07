@@ -1,7 +1,7 @@
 import { useEffect, useState, useContext } from "react";
 import { differenceInCalendarDays } from "date-fns";
 import axios from "axios";
-import { Navigate } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { useAuth } from "./context/AuthContext";
 import { UserContext } from "./UserContext";
 
@@ -15,6 +15,7 @@ export default function BookingWidget({ place }: { place: any }) {
   // const { user } = useAuth();
   // const { user } = useContext(AuthContext);
   const { user } = useContext(UserContext);
+  const [showLoginPrompt, setShowLoginPrompt] = useState(false);
 
   useEffect(() => {
     if (user) {
@@ -63,6 +64,10 @@ export default function BookingWidget({ place }: { place: any }) {
       console.error("Error booking the place:", error);
       alert("An error occurred while booking. Please try again later.");
     }
+  }
+
+  function redirectToLogin() {
+    setRedirect("/login");
   }
 
   if (redirect) {
@@ -120,11 +125,42 @@ export default function BookingWidget({ place }: { place: any }) {
           </div>
         )}
       </div>
-      <button onClick={bookThisPlace} className="primary mt-4">
-        Book this place
-        {numberOfNights > 0 && <span> ${numberOfNights * place.price}</span>}
-      </button>
-
+      {user ? (
+        <button onClick={bookThisPlace} className="primary mt-4">
+          Book this place
+          {numberOfNights > 0 && <span> ${numberOfNights * place.price}</span>}
+        </button>
+      ) : (
+        <>
+          <button onClick={() => setShowLoginPrompt(true)} className="primary mt-4">
+            Book this place
+            {numberOfNights > 0 && <span> ${numberOfNights * place.price}</span>}
+          </button>
+          
+          {showLoginPrompt && (
+            <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+              <div className="bg-white p-6 rounded-2xl max-w-md">
+                <h2 className="text-xl font-semibold mb-4">Login Required</h2>
+                <p className="mb-4">You need to login or register to book a place.</p>
+                <div className="flex gap-2">
+                  <button
+                    onClick={() => setRedirect('/login')}
+                    className="primary"
+                  >
+                    Go to Login Page
+                  </button>
+                  <button
+                    onClick={() => setShowLoginPrompt(false)}
+                    className="bg-gray-500 text-white py-2 px-4 rounded-2xl"
+                  >
+                    Close
+                  </button>
+                </div>
+              </div>
+            </div>
+          )}
+        </>
+      )}
     </div>
   );
 }
